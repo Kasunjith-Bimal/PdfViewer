@@ -1,0 +1,11 @@
+<div class="mainWraper">  
+    <input type="file" id='uploadBtn' (change)="onFilesSelected($event)" accept=".pdf, .doc, .docx" />
+    <p class="pageNumber">{{this.currentPage}}</p>
+    <input type="text" id="inputText" [(ngModel)]="this.currentPage" (keyup.enter)="onEnter()" /> 
+     <div class="pagewrapper" (scroll)="onScrollNew()" #pdfPagesContainerScroll>
+     <div class="pageItem scrollable-div" #scrollableDivs  *ngFor="let displaypage of displayPages"  id="pageItem{{displaypage.pageNumber}}"   [style.width.px]="displaypage.width"  [style.height.px]="displaypage.height" >
+       <canvas [id]="'pdfCanvas_' + displaypage.pageNumber" #pdfCanvas class="pdf-canvas" ></canvas>  
+     </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,77 @@
+<!-- <input type="file" id='uploadBtn' (change)="onFilesSelected($event)" accept=".pdf, .doc, .docx" multiple>
+<button (click)="showArray(rectangles)">Show Array</button>
+<input type="number" [(ngModel)]="pageNumber" type="number" class="form-control" id="valueId" >
+<button (click)="showDocumentPage(pageNumber)">Show Document Page {{currentPage}}</button>
+
+
+<div id="startButton" style="width: 100px;height: 100px;border: 1px solid salmon;background-color: blanchedalmond;top:0;left: 0;" 
+draggable="true" #dragableEle  
+(mousedown)="getDragDivOffset($event)" 
+(mouseup)="onDragEnd($event)" 
+> 
+</div>
+
+  
+   <div #pdfPagesContainerScroll id="wrapper" infinite-scroll
+         [infiniteScrollDistance]="2"
+         [infiniteScrollUpDistance]="1.5"
+         (scrolled)="onScrollnew()" [infiniteScrollContainer]="pdfPagesContainerScroll" >
+  <div id="parent" 
+  *ngFor="let pdfPage of pdfPages; let i = index" [id]="'pdfPage_' + (i+1)"
+  [style.width.px]="pdfPage.width" [style.height.px]="pdfPage.height"
+  [style.zoom]="zoomLevel"
+  style="border: 1px solid red;position: relative;margin: 0 auto;" class="drag-boundary"  
+  #myBounds (dragover)="onDragOver($event)" (drop)="onDrop($event, pdfPage.pageNumber)">
+   
+    <ng-container *ngFor="let location of rectangles; let i = index">
+      <div class="annotationItem"
+      #annotationItem
+      *ngIf="location.pageNumber == pdfPage.pageNumber"
+      [style.width.px]="location.width"
+      [style.height.px]="location.height"
+
+
+    [position]="{'x':location.left,'y':location.top}" 
+    ngDraggable 
+    ngResizable  
+    rzHandles="all"
+    [rzContainment]="myBounds"
+    [rzAspectRatio]="true"
+    [bounds]="myBounds" 
+    [inBounds]="inBounds" 
+    [outOfBounds]="myOutOfBounds"    
+    class="drag-block resizable-widget" 
+    (started)="onStart($event,location.id)" 
+    (stopped)="onStop($event,location.id)" 
+    (movingOffset)="onMoving($event,location.id)"
+    [preventDefaultEvent]="true" 
+    (endOffset)="onMoveEnd($event,location.id)" 
+    style="border: 1px solid black;position: absolute;"
+   
+    (rzStart)="onResizeStart($event,location.id)" 
+    (rzStop)="onResizeStop($event,location.id)" 
+    (rzResizing)="onResizing($event,location.id)"
+    [rzMinWidth]="200" 
+    [rzMaxWidth]="300"
+    [rzMinHeight]="200" 
+    [rzMaxHeight]="300"
+    >
+      <p>left({{location.left}}),Top({{location.top}})<br>Width({{location.width}}),Height({{location.height}}) </p>
+    </div>
+    </ng-container>
+
+
+
+    <canvas [id]="'pdfCanvas_' + pdfPage.pageNumber" #pdfCanvas ></canvas>
+   
+  </div>
+
+  <button (click)="increaseZoom()">+</button>
+
+</div>
+
+   -->
+
+   <app-sample-div></app-sample-div>
+
+   

@@ -1,0 +1,9 @@
+.pageItem{
+    border: 1px solid black;
+    margin: 0 auto;
+}
+
+.pagewrapper {
+    height: 100vh;
+    overflow: auto;
+}
